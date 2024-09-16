@@ -15,7 +15,23 @@ Intitial usage of the toolbox has been internal for replicating the exposure ass
 
 ## Toolbox inputs
 
+- **Vegetation Layer**
 
+Gridded vegetation data. Toolbox designed about ABoVE data, should work with other data sources.
+
+- **Reclassification Table**
+
+Can be entered manually in tool, or loaded from a table file.
+
+- **Building Footprint Layer**
+
+Building footprints can be input as a vector or raster. If the building footprints are a vector, the tool can buffer these by 500 meters by user choice. This vector data will be rasterized matching the vegetation layer gridded file - a previously created rasterized building footprint dataset can also be used.
+
+- **Clipping Layer**
+
+The outputs can be clipped to match a polygon dataset, such as the outline of a state. All outputs will be clipped to the shape of the polygon clipping layer.
+
+## Methodology
 
 The following image illustrates the processing methods.
 
