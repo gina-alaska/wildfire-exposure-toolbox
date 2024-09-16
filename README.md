@@ -37,7 +37,7 @@ The following image illustrates the processing methods.
 
 
 ![image](https://github.com/user-attachments/assets/35f87d21-13d2-40db-825f-fa5af7b4cf0c)
-Figure: Exposure assessment method process fowchart adapted from Beverly et al. (2010, 2021).
+Figure: Exposure assessment method process flowchart adapted from Beverly et al. (2010, 2021).
  
 
 
