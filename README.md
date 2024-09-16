@@ -17,11 +17,11 @@ Intitial usage of the toolbox has been internal for replicating the exposure ass
 
 - **Vegetation Layer**
 
-Gridded vegetation data. Toolbox designed about ABoVE data, should work with other data sources.
+Gridded vegetation data that will be processed. Toolbox designed using Arctic Boreal Vulnerability Experiment (ABoVE) Landsat-derived Annual Dominant Land Cover Across ABoVE Core Domain, 1984-2014 (Hereafter refered to as ABoVE Landcover), a 30m x 30m categorical landcover classification (Wang et al., 2019). Other categorical vegetation datasets can be used, provided the user customizes the reclassification table to match the dataset.
 
 - **Reclassification Table**
 
-Can be entered manually in tool, or loaded from a table file.
+Can be entered manually in tool, or loaded from a table file. This table is used to reclassify categorical vegetation data into hazard fuels data. We developed reclassification tables for 100 meter and 500 meter distances for the ABoVE Landcover data; these are included in the zipped toolbox and can be used as a template for other landcover datasets.
 
 - **Building Footprint Layer**
 
@@ -46,3 +46,7 @@ Figure: Exposure assessment method process fowchart adapted from Beverly et al. 
 Beverly JL, Bothwell P, Conner JCR, Herd EPK (2010) Assessing the exposure of the built environment to potential ignition sources generated from vegetative fuel. Int J Wildland Fire 19(3):299–313. https://doi.org/10.1071/WF09071
 
 Beverly JL, McLoughlin N, Chapman E (2021) A simple metric of landscape fire exposure. Landsc Ecol. https://doi.org/10.1007/s10980-020-01173-8
+
+Schmidt, J.I., Ziel, R.H., Calef, M.P. et al. Spatial distribution of wildfire threat in the far north: exposure assessment in boreal communities. Nat Hazards 120, 4901–4924 (2024). https://doi.org/10.1007/s11069-023-06365-4
+
+Wang, J.A., D. Sulla-Menashe, C.E. Woodcock, O. Sonnentag, R.F. Keeling, and M.A. Friedl. 2019. ABoVE: Landsat-derived Annual Dominant Land Cover Across ABoVE Core Domain, 1984-2014. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1691
