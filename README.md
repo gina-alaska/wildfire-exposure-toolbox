@@ -3,7 +3,7 @@ Repository for GINA ArcGIS Wildfire Exposure Python Toolbox.
 
 ## Accessing the Toolbox
 
-Zipped directories of the toolbox and ancillary files can be downloaded from the [Releases section](https://github.com/gina-alaska/wildfire-exposure-toolbox/tags). To use the toolbox, unzip the toolbox into a location on your ArcPro machine. In ArcPro, naviagate to the Catalog pane and right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. THe Toolbox should now be added to your ArcPro project and can be run from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
+Zipped directories of the toolbox and ancillary files can be downloaded from the [Releases section](https://github.com/gina-alaska/wildfire-exposure-toolbox/tags). To use the toolbox, unzip the toolbox into a location on your ArcPro machine. In ArcPro, naviagate to the Catalog pane and right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. The Toolbox should now be added to your ArcPro project and can be run from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
 
 ## Overview
 
