@@ -388,7 +388,7 @@ class WildfireExposure(object):
                     arcpy.AddMessage(arcpy.GetMessages())
                     input_buildings = building_buffer
                 building_name, building_extension = os.path.splitext(input_buildings)
-                building_raster = building_name + '_raster'
+                building_raster = os.path.basename(building_name) + '_raster'
                 arcpy.conversion.PolygonToRaster(input_buildings, arcpy.Describe(input_buildings).OIDFieldName, building_raster)
                 input_buildings = building_raster
                 arcpy.AddMessage(f"combining with {input_buildings} (datatype: {arcpy.Describe(input_buildings).dataType}), using {input_exp['100']} and {input_exp['500']}")
