@@ -124,7 +124,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput100.enabled = False
         expOutput100.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Exposure_Symbology.lyrx')
+                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
 
         expOutput500 = arcpy.Parameter(
             displayName="Output 500m Exposure Pct Raster",
@@ -134,7 +134,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput500.enabled = False
         expOutput500.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Exposure_Symbology.lyrx')
+                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
         
         combiCheck = arcpy.Parameter(
             name="combiCheck",
@@ -183,7 +183,7 @@ class WildfireExposure(object):
             direction="Output")
         combiOutput.enabled = False
         combiOutput.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Exposure_Symbology.lyrx')
+                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
 
 
         clipOutputs = arcpy.Parameter(
