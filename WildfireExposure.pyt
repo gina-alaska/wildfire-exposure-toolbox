@@ -348,8 +348,8 @@ class WildfireExposure(object):
                 arcpy.AddMessage(f'reclassifying with {d} meter remap')
                 hazard_raster = arcpy.sa.Reclassify(input_raster, "Value", remap_table[f'{d}'], missing_values="NODATA")
                 arcpy.AddMessage(arcpy.GetMessages())
-                if hazOutput['100']:
-                    arcpy.AddMessage(f"saving reclassed raster to {hazOutput['100']}")
+                if hazOutput[f'{d}']:
+                    arcpy.AddMessage(f"saving reclassed raster to {hazOutput[f'{d}']}")
                     hazard_raster.save(hazOutput[f'{d}'])
                 arcpy.AddMessage("adding reclassed raster to exposure raster input")
                 input_haz[f'{d}'] = hazard_raster
