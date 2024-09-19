@@ -3,7 +3,7 @@ Repository for GINA ArcGIS Wildfire Exposure Python Toolbox.
 
 ## Accessing the Toolbox
 
-Zipped directories of the toolbox and ancillary files can be downloaded from the [Releases section](https://github.com/gina-alaska/wildfire-exposure-toolbox/tags). To use the toolbox, unzip the toolbox into a location on your ArcPro machine. In ArcPro, naviagate to the Catalog pane and right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. The Toolbox should now be added to your ArcPro project and can be run from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
+Zipped directories of the toolbox and ancillary files can be downloaded from the [Releases section](https://github.com/gina-alaska/wildfire-exposure-toolbox/tags). To use the toolbox, unzip the toolbox into a location on your ArcPro machine. In ArcPro, navigate to the Catalog pane and right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. The Toolbox should now be added to your ArcPro project and can be run from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
 
 ## Overview
 
@@ -11,7 +11,15 @@ This ArcGIS Python Toolbox, developed in collaboration with Dr. Jennifer Schmidt
 
 Schmidt, J.I., Ziel, R.H., Calef, M.P. et al. Spatial distribution of wildfire threat in the far north: exposure assessment in boreal communities. Nat Hazards 120, 4901–4924 (2024). https://doi.org/10.1007/s11069-023-06365-4
 
-The toolbox was designed for replicating the described exposure assessment, and expanding to additional areas, in a user-friedly and repeatable way. Processing methods include the calculation of hazard fuels layers at 100 and 500 meter distances, exposure layers at 100 and 500 meter distances, and a combined exposure layer that assigns the values from the 100 meter exposure within a 500m buffer distance of a buildings layer, and the 500 meter exposure values outside those areas. Intermediate products are also created and saved, and the tool can use previously generated intermediate products as inputs to limit processing time.
+The toolbox was designed for replicating the described exposure assessment, and expanding to additional areas, in a user-friendly and repeatable way. Processing methods include the calculation of hazard fuels layers at 100 and 500 meter distances, exposure layers at 100 and 500 meter distances, and a combined exposure layer that assigns the values from the 100 meter exposure within a 500m buffer distance of a buildings layer, and the 500 meter exposure values outside those areas. Intermediate products are also created and saved, and the tool can use previously generated intermediate products as inputs to limit processing time.
+
+## Known Issues
+
+If issues are found, please let the developers know by creating a [GitHub Issue](https://github.com/gina-alaska/wildfire-exposure-toolbox/issues)
+
+### Current Issues
+
+- 9/19/24 - When saving the Hazard fuels datasets in a geodatabase, they are added to ArcPro with an incorrect, default name. THe files are named correctly in the geodatabase. Saving them as a GeoTIFF file seems to avoid this, as well as running the full tool and clipping outputs. This appears to be due to a bug in the arcpy Reclassify tool.
 
 ## Toolbox inputs
 
