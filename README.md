@@ -58,3 +58,5 @@ Beverly JL, McLoughlin N, Chapman E (2021) A simple metric of landscape fire exp
 Schmidt, J.I., Ziel, R.H., Calef, M.P. et al. Spatial distribution of wildfire threat in the far north: exposure assessment in boreal communities. Nat Hazards 120, 4901–4924 (2024). https://doi.org/10.1007/s11069-023-06365-4
 
 Wang, J.A., D. Sulla-Menashe, C.E. Woodcock, O. Sonnentag, R.F. Keeling, and M.A. Friedl. 2019. ABoVE: Landsat-derived Annual Dominant Land Cover Across ABoVE Core Domain, 1984-2014. ORNL DAAC, Oak Ridge, Tennessee, USA. https://doi.org/10.3334/ORNLDAAC/1691
+
+Ziel R., Schmidt J.I., Calef M.P., and Varvek A. 2024. Mapping the Wildfire Threat for Boreal Communities. University of Alaska Anchorage and Fairbanks. https://www.frames.gov/sites/default/files/AFSC/presentations/WildfireExposureTechnicalReport.pdf 
