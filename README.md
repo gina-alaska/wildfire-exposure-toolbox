@@ -21,7 +21,7 @@ If issues are found, please let the developers know by creating a [GitHub Issue]
 
 ### Current Issues
 
-- 9/19/24 - When saving the Hazard fuels datasets in a geodatabase, they are added to ArcPro with an incorrect, default name. The files are named correctly in the geodatabase. Saving them as a GeoTIFF file seems to avoid this, as well as running the full tool and clipping outputs. This appears to be due to a bug in the arcpy Reclassify tool.
+- [#6: 9/18/24](https://github.com/gina-alaska/wildfire-exposure-toolbox/issues/6) - When saving the Hazard fuels datasets in a geodatabase, they are added to ArcPro with an incorrect, default name. The files are named correctly in the geodatabase. Saving them as a GeoTIFF file seems to avoid this, as well as running the full tool and clipping outputs. This appears to be due to a bug in the arcpy Reclassify tool.
 
 ## Toolbox inputs
 
