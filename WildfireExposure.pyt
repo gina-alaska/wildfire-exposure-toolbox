@@ -2,7 +2,7 @@
 
 import arcpy
 from arcpy.sa import *
-import os
+import os, sys
 
 class Toolbox(object):
     def __init__(self):
@@ -336,6 +336,15 @@ class WildfireExposure(object):
             arcpy.env.outputCoordinateSystem = arcpy.Describe(input_raster).spatialReference
             arcpy.env.cellSize = input_raster
             arcpy.env.snapRaster = input_raster
+            if arcpy.Describe(input_raster).spatialReference.type != "Projected":
+                arcpy.AddError("Input raster dataset not in projected spatial reference. Please project your input dataset for spaital analysis.")
+                sys.exit(1)
+            else:
+                input_raster_linearUnits = arcpy.Describe(input_raster).spatialReference.linearUnitName
+                input_raster_metersPerUnit = arcpy.Describe(input_raster).spatialReference.metersPerUnit
+                arcpy.AddMessage(f"{input_raster} spatial ref: {arcpy.Describe(input_raster).spatialReference.type}, {input_raster_linearUnits}, factor: {input_raster_metersPerUnit}")
+
+        
 
         # Process: Reclassify (Reclassify) (sa)
         if hazCheck:
@@ -360,13 +369,13 @@ class WildfireExposure(object):
                 dist = [f'{whichExp[:-1]}']
             for d in dist:
                 if d == '100':
-                    nbhd = "Circle 3 CELL"
-                    expression = "SetNull(IsNull(y), Int(x / 29))"
+                    nbhd = f"Circle {int(100 /  input_raster_metersPerUnit)} MAP"
+                    expression = "SetNull(IsNull(y), Int(x))"
                 elif d == '500':
-                    nbhd = "Circle 16 CELL"
-                    expression = "SetNull(IsNull(y), Int(x / 797))"
+                    nbhd = f"Circle {int(500 /  input_raster_metersPerUnit)} MAP"
+                    expression = "SetNull(IsNull(y), Int(x))"
                 arcpy.AddMessage(f'focal statistics with {d} hazardous veg, using hazOutput')
-                exposure_raster_sum = arcpy.sa.FocalStatistics(in_raster = input_haz[f'{d}'], neighborhood = nbhd, statistics_type = "SUM", ignore_nodata = "DATA")
+                exposure_raster_sum = arcpy.sa.FocalStatistics(in_raster = input_haz[f'{d}'], neighborhood = nbhd, statistics_type = "MEAN", ignore_nodata = "DATA")
                 exposure_raster = arcpy.sa.RasterCalculator([exposure_raster_sum, input_haz[f'{d}']], ['x', 'y'], expression)
                 arcpy.AddMessage(arcpy.GetMessages())
                 if expOutput[f'{d}']:
