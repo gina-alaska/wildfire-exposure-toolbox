@@ -74,6 +74,7 @@ class WildfireExposure(object):
             parameterType="Optional",
             direction="Output")
         hazOutput100.enabled = False
+        hazOutput100.symbology = os.path.join(os.path.dirname(__file__), 'symbology', 'WIldfire_Hazardous_100_Cat_Explained.lyrx')
         
         hazOutput500 = arcpy.Parameter(
             displayName="Output 500m Hazardous Veg Raster",
@@ -82,6 +83,7 @@ class WildfireExposure(object):
             parameterType="Optional",
             direction="Output")
         hazOutput500.enabled = False
+        hazOutput500.symbology = os.path.join(os.path.dirname(__file__), 'symbology', 'WIldfire_Hazardous_500_Cat_Explained.lyrx') 
         
         expCheck = arcpy.Parameter(
             name="expCheck",
@@ -124,7 +126,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput100.enabled = False
         expOutput100.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
+                                    'symbology', 'Wildfire_Exposure_Cat_Explained_v2.lyrx')
 
         expOutput500 = arcpy.Parameter(
             displayName="Output 500m Exposure Pct Raster",
@@ -134,7 +136,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput500.enabled = False
         expOutput500.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
+                                    'symbology', 'Wildfire_Exposure_Cat_Explained_v2.lyrx')
         
         combiCheck = arcpy.Parameter(
             name="combiCheck",
