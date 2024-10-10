@@ -306,7 +306,6 @@ class WildfireExposure(object):
         hazCheck = parameters[0].value
         whichHaz = parameters[1].valueAsText if hazCheck else ""
         input_raster = parameters[2].valueAsText if hazCheck else ""
-        arcpy.AddMessage(f"imput Raster: {input_raster}")
         remap_table = {
             '100': parameters[3].valueAsText if hazCheck else "",
             '500': parameters[4].valueAsText if hazCheck else ""
