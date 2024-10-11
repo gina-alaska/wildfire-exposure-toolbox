@@ -233,6 +233,7 @@ class WildfireExposure(object):
 
     def updateParameters(self, parameters):
         # Enable/disable parameters based on the value of other parameters
+        home = arcpy.mp.ArcGISProject("CURRENT").homeFolder
         parameters[1].enabled = parameters[0].value
         parameters[2].enabled = parameters[0].value
         if parameters[1].value == '100m':
@@ -289,6 +290,29 @@ class WildfireExposure(object):
             parameters[17].enabled = False
             parameters[18].enabled = False
         parameters[20].enabled = parameters[19].value
+
+        if parameters[2].value:
+            if parameters[5].enabled and not parameters[5].altered:
+                parameters[5].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Hazard_100m.tif')
+            if parameters[6].enabled and not parameters[6].altered:
+                parameters[6].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Hazard_500m.tif')
+        if parameters[11].enabled and not parameters[11].altered:
+            if parameters[2].value:
+                parameters[11].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
+            elif parameters[9].enabled and parameters[9].value:
+                parameters[11].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_100m.tif')
+        if parameters[12].enabled and not parameters[12].altered:
+            if parameters[2].value:
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
+            elif parameters[10].enabled and parameters[10].value:
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[10].valueAsText)[:10] + '_Exposure_100m.tif')
+        if parameters[18].enabled and not parameters[18].altered:
+            if parameters[2].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_Combined.tif')
+            elif parameters[9].enabled and parameters[9].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_Combined.tif')
+            elif parameters[14].enabled and parameters[14].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[14].valueAsText)[:10] + '_Exposure_Combined.tif')
 
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
