@@ -1,0 +1,16 @@
+﻿FROM_,TO,OUT,MAPPING,Veg_Type
+1,1,100,ValueToValue,Evergreen Forest
+2,2,6,ValueToValue,Deciduous Forest
+3,3,75,ValueToValue,Mixed Forest
+4,4,100,ValueToValue,Woodland
+5,5,6,ValueToValue,Low Shrub
+6,6,6,ValueToValue,Tall Shrub
+7,7,20,ValueToValue,Open Shrub
+8,8,6,ValueToValue,Herbaceous
+9,9,20,ValueToValue,Tussock Tundra
+10,10,0,ValueToValue,Sparsely Vegetated
+11,11,20,ValueToValue,Fen
+12,12,0,ValueToValue,Bog
+13,13,0,ValueToValue,Shallows/littoral
+14,14,0,ValueToValue,Barren
+15,15,0,ValueToValue,Water
