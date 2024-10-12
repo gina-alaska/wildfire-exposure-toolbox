@@ -29,6 +29,8 @@ If issues are found, please let the developers know by creating a [GitHub Issue]
 
 Gridded vegetation data that will be processed. Toolbox designed using Arctic Boreal Vulnerability Experiment (ABoVE) Landsat-derived Annual Dominant Land Cover Across ABoVE Core Domain, 1984-2014 (Hereafter refered to as ABoVE Landcover), a 30m x 30m categorical landcover classification (Wang et al., 2019). Other categorical vegetation datasets can be used, provided the user customizes the reclassification table to match the dataset.
 
+The tool is built to handle different pixel sizes - however, since the tool generates datasets at 100m and 500m distances, a pixel size smaller than 100 meters would be best for data validity.
+
 - **Reclassification Table**
 
 Can be entered manually in tool, or loaded from a table file. This table is used to reclassify categorical vegetation data into hazard fuels data. We developed reclassification tables for 100 meter and 500 meter distances for the ABoVE Landcover data; these are included in the zipped toolbox and can be used as a template for other landcover datasets.
