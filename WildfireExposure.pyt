@@ -74,6 +74,7 @@ class WildfireExposure(object):
             parameterType="Optional",
             direction="Output")
         hazOutput100.enabled = False
+        hazOutput100.symbology = os.path.join(os.path.dirname(__file__), 'symbology', 'WIldfire_Hazardous_100_Cat_Explained.lyrx')
         
         hazOutput500 = arcpy.Parameter(
             displayName="Output 500m Hazardous Veg Raster",
@@ -82,6 +83,7 @@ class WildfireExposure(object):
             parameterType="Optional",
             direction="Output")
         hazOutput500.enabled = False
+        hazOutput500.symbology = os.path.join(os.path.dirname(__file__), 'symbology', 'WIldfire_Hazardous_500_Cat_Explained.lyrx') 
         
         expCheck = arcpy.Parameter(
             name="expCheck",
@@ -124,7 +126,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput100.enabled = False
         expOutput100.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
+                                    'symbology', 'Wildfire_Exposure_Cat_Explained_v2.lyrx')
 
         expOutput500 = arcpy.Parameter(
             displayName="Output 500m Exposure Pct Raster",
@@ -134,7 +136,7 @@ class WildfireExposure(object):
             direction="Output")
         expOutput500.enabled = False
         expOutput500.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
+                                    'symbology', 'Wildfire_Exposure_Cat_Explained_v2.lyrx')
         
         combiCheck = arcpy.Parameter(
             name="combiCheck",
@@ -183,7 +185,7 @@ class WildfireExposure(object):
             direction="Output")
         combiOutput.enabled = False
         combiOutput.symbology = os.path.join(os.path.dirname(__file__), 
-                                    'Wildfire_Exposure_Cat_Explained_v2.lyrx')
+                                    'symbology', 'Wildfire_Exposure_Cat_Explained_v2.lyrx')
 
 
         clipOutputs = arcpy.Parameter(
@@ -231,6 +233,7 @@ class WildfireExposure(object):
 
     def updateParameters(self, parameters):
         # Enable/disable parameters based on the value of other parameters
+        home = arcpy.mp.ArcGISProject("CURRENT").homeFolder
         parameters[1].enabled = parameters[0].value
         parameters[2].enabled = parameters[0].value
         if parameters[1].value == '100m':
@@ -288,6 +291,29 @@ class WildfireExposure(object):
             parameters[18].enabled = False
         parameters[20].enabled = parameters[19].value
 
+        if parameters[2].value:
+            if parameters[5].enabled and not parameters[5].altered:
+                parameters[5].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Hazard_100m.tif')
+            if parameters[6].enabled and not parameters[6].altered:
+                parameters[6].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Hazard_500m.tif')
+        if parameters[11].enabled and not parameters[11].altered:
+            if parameters[2].value:
+                parameters[11].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
+            elif parameters[9].enabled and parameters[9].value:
+                parameters[11].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_100m.tif')
+        if parameters[12].enabled and not parameters[12].altered:
+            if parameters[2].value:
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
+            elif parameters[10].enabled and parameters[10].value:
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[10].valueAsText)[:10] + '_Exposure_100m.tif')
+        if parameters[18].enabled and not parameters[18].altered:
+            if parameters[2].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_Combined.tif')
+            elif parameters[9].enabled and parameters[9].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_Combined.tif')
+            elif parameters[14].enabled and parameters[14].value:
+                parameters[18].value = os.path.join(home, os.path.basename(parameters[14].valueAsText)[:10] + '_Exposure_Combined.tif')
+
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
         parameter. This method is called after internal validation."""
@@ -302,37 +328,38 @@ class WildfireExposure(object):
         arcpy.CheckOutExtension("spatial")
 
         hazCheck = parameters[0].value
-        whichHaz = parameters[1].valueAsText
-        input_raster = parameters[2].valueAsText
+        whichHaz = parameters[1].valueAsText if hazCheck else ""
+        input_raster = parameters[2].valueAsText if hazCheck else ""
         remap_table = {
-            '100': parameters[3].valueAsText,
-            '500': parameters[4].valueAsText
+            '100': parameters[3].valueAsText if hazCheck else "",
+            '500': parameters[4].valueAsText if hazCheck else ""
         }
         hazOutput = {
-            '100': parameters[5].valueAsText,
-            '500': parameters[6].valueAsText
+            '100': parameters[5].valueAsText if hazCheck else "",
+            '500': parameters[6].valueAsText if hazCheck else ""
         }
         expCheck = parameters[7].value
-        whichExp = parameters[8].valueAsText
+        whichExp = parameters[8].valueAsText if expCheck else ""
         input_haz = {
-            '100': parameters[9].valueAsText,
-            '500': parameters[10].valueAsText
+            '100': parameters[9].valueAsText if expCheck else "",
+            '500': parameters[10].valueAsText if expCheck else ""
         }
         expOutput = {
-            '100': parameters[11].valueAsText,
-            '500': parameters[12].valueAsText
+            '100': parameters[11].valueAsText if expCheck else "",
+            '500': parameters[12].valueAsText if expCheck else ""
         }
         combiCheck = parameters[13].value
         input_exp = {
-            '100': parameters[14].valueAsText,
-            '500': parameters[15].valueAsText
+            '100': parameters[14].valueAsText if combiCheck else "",
+            '500': parameters[15].valueAsText if combiCheck else ""
         }
-        input_buildings = parameters[16].valueAsText
-        bufferCheck = parameters[17].value
-        combiOutput = parameters[18].valueAsText
+        input_buildings = parameters[16].valueAsText if combiCheck else ""
+        bufferCheck = parameters[17].value if combiCheck else False
+        combiOutput = parameters[18].valueAsText if combiCheck else ""
         clipOutputs = parameters[19].value
-        clipExtent = parameters[20].valueAsText
+        clipExtent = parameters[20].valueAsText if clipOutputs else ""
         if input_raster:
+            arcpy.AddMessage(f"Setting environment variables from {input_raster}")
             arcpy.env.outputCoordinateSystem = arcpy.Describe(input_raster).spatialReference
             arcpy.env.cellSize = input_raster
             arcpy.env.snapRaster = input_raster
@@ -383,9 +410,11 @@ class WildfireExposure(object):
                     exp_raster_8bit = arcpy.Raster(result.getOutput(0))
                 input_exp[f'{d}'] = exp_raster_8bit
         if combiCheck:
+            arcpy.AddMessage(f"{input_exp}")
             arcpy.env.outputCoordinateSystem = arcpy.Describe(input_exp['500']).spatialReference
             arcpy.env.cellSize = input_exp['500']
             arcpy.env.snapRaster = input_exp['500']
+            arcpy.env.extent = "MAXOF"
             arcpy.AddMessage(f"combining with {input_buildings} (datatype: {arcpy.Describe(input_buildings).dataType}), using {input_exp['100']} and {input_exp['500']}")
             if arcpy.Describe(input_buildings).dataType == "FeatureLayer" or arcpy.Describe(input_buildings).dataType == "ShapeFile":
                 arcpy.AddMessage(f'Converting {input_buildings} to raster')
@@ -403,11 +432,6 @@ class WildfireExposure(object):
                 arcpy.AddMessage(f"combining with {input_buildings} (datatype: {arcpy.Describe(input_buildings).dataType}), using {input_exp['100']} and {input_exp['500']}")
             combi = Con(IsNull(input_buildings), input_exp['500'], Con(arcpy.Raster(input_exp['500']) > arcpy.Raster(input_exp['100']), input_exp['500'],
                         input_exp['100']))
-            '''
-            combi = Con(IsNull(input_buildings), input_exp['500'],
-                        Con(input_exp['500'] > input_exp['100'], input_exp['500'],
-                        input_exp['100']))
-            '''
             arcpy.AddMessage(arcpy.GetMessages())
 
             combi.save(combiOutput)
