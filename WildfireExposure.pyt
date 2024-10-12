@@ -305,7 +305,7 @@ class WildfireExposure(object):
             if parameters[2].value:
                 parameters[12].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
             elif parameters[10].enabled and parameters[10].value:
-                parameters[12].value = os.path.join(home, os.path.basename(parameters[10].valueAsText)[:10] + '_Exposure_100m.tif')
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[10].valueAsText)[:10] + '_Exposure_500m.tif')
         if parameters[18].enabled and not parameters[18].altered:
             if parameters[2].value:
                 parameters[18].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_Combined.tif')
@@ -364,12 +364,15 @@ class WildfireExposure(object):
             arcpy.env.cellSize = input_raster
             arcpy.env.snapRaster = input_raster
             if arcpy.Describe(input_raster).spatialReference.type != "Projected":
-                arcpy.AddError("Input raster dataset not in projected spatial reference. Please project your input dataset for spaital analysis.")
+                arcpy.AddError("Input raster dataset not in projected spatial reference. Please project your input dataset for spatial analysis.")
                 sys.exit(1)
             else:
                 input_raster_linearUnits = arcpy.Describe(input_raster).spatialReference.linearUnitName
                 input_raster_metersPerUnit = arcpy.Describe(input_raster).spatialReference.metersPerUnit
-                arcpy.AddMessage(f"{input_raster} spatial ref: {arcpy.Describe(input_raster).spatialReference.type}, {input_raster_linearUnits}, factor: {input_raster_metersPerUnit}")
+                input_raster_meanCellWidth = arcpy.Describe(input_raster).meanCellWidth
+                arcpy.AddMessage(f"{input_raster} spatial ref: {arcpy.Describe(input_raster).spatialReference.type}, {input_raster_linearUnits}, heights: {input_raster_meanCellWidth} factor: {input_raster_metersPerUnit}")
+                if input_raster_meanCellWidth * input_raster_metersPerUnit > 100:
+                    arcpy.AddWarning(f"Warning: Large input raster pixel size of {input_raster_meanCellWidth} {input_raster_linearUnits}(s) may result in scientifically non-valid data.")
 
         
 
