@@ -12,7 +12,11 @@ jobs:
         uses: actions/checkout@v4
           
       - name: Convert Markdown to PDF with emoji and image support
-        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:2.9 README.md -o README.pdf
+        run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:2.9 \ 
+          -V colorlinks=true \
+          -V linkcolor=blue \
+          -V urlcolor=red \
+          -V toccolor=grayREADME.md -o README.pdf
       - name: Upload PDF Artifact
         uses: actions/upload-artifact@v4
         with:
