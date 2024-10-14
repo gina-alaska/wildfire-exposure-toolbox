@@ -1,5 +1,5 @@
 # wildfire-exposure-toolbox
-Repository for ISER/GINA ArcGIS Wildfire Exposure Python Toolbox.
+GitHub Repository for ISER/GINA ArcGIS Wildfire Exposure Python Toolbox.
 
 ## Accessing Toolbox
 
