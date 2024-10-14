@@ -20,7 +20,7 @@ jobs:
         run: |
 
           # Run pandoc to convert README.md to PDF
-          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:2.9 \
+          docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:latest \
             -V colorlinks=true \
             -V linkcolor=blue \
             -V urlcolor=blue \
