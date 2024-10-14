@@ -65,7 +65,7 @@ Reclassification tables for ABoVE Landcover data, based on Beverly et al., 2021 
 
 - **Building_Outlines_FNSB.shp**
 
-FNSB building footprint GIS polygon data, accessed from https://services.arcgis.com/f4rR7WnIfGBdVYFd/arcgis/rest/services/Building_Outlines_2023_Pictometry/FeatureServer
+FNSB building footprint GIS polygon data, accessed from: https://fnsb.gov/1108/FNSB-GIS-Layer-REST-Services
 
 - **Building_Outlines_FNSB_500mBuffer_Raster.tif**
 
