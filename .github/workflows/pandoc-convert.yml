@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
           
-      - name: Convert Markdown to PDF with emoji and image support
+      - name: Convert Markdown to PDF
         run: docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:2.9 \ 
           -V colorlinks=true \
           -V linkcolor=blue \
