@@ -3,7 +3,7 @@ name: Convert Markdown to PDF
 on:
   push:
     branches:
-      -main
+      - main
     paths:
       - README.md
 
