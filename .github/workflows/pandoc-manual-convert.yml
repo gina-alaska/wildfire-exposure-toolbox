@@ -1,4 +1,4 @@
-name: Convert README.md to PDF
+name: Convert README.md to HTML to PDF
 
 on:
   workflow_dispatch: # Allows manual triggering
@@ -18,12 +18,6 @@ jobs:
 
       - name: Convert Markdown to PDF
         run: |
-          # Create the url-wrap.tex file
-          echo '\usepackage{url}' > url-wrap.tex
-          echo '\usepackage{hyperref}' >> url-wrap.tex
-          echo '\hypersetup{breaklinks=true}' >> url-wrap.tex
-          echo '\def\UrlBreaks{\do\/\do-}' >> url-wrap.tex
-          echo '\sloppy' >> url-wrap.tex
 
           # Run pandoc to convert README.md to PDF
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:2.9 \
@@ -32,9 +26,7 @@ jobs:
             -V urlcolor=blue \
             -V toccolor=gray \
             -V geometry:margin=1in \
-            -V fontsize=11pt \
-            -V geometry:letterpaper \
-            -H url-wrap.tex \
+            -t html \
             README.md -o README.pdf
 
       - name: Configure git for commit
