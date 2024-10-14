@@ -7,7 +7,11 @@ Zipped directories of the toolbox and ancillary files can be downloaded from the
 
 ## Installing Toolbox
 
-To use the toolbox, unzip the toolbox into a location on your ArcPro machine. In ArcPro, navigate to the Catalog pane, and on the Project tab, right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. The Toolbox should now be added to your ArcPro project and can be run from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
+To use the toolbox, unzip the toolbox into a location on your ArcGIS Pro machine. In ArcGIS Pro:
+
+1. Navigate to the Catalog pane -> Project tab
+2. Right click Toolboxes. Select 'Add New Toolbox', navigate to and select the WildfireExposure.pyt file. The Toolbox should now be added to your ArcGIS Pro project.
+3. Run the toolbox from the Catalog pane by clicking the dropdown next to 'WildfireExposure.pyt' and double clicking the 'Wildfire Hazard and Exposure' script tool that appears.
 
 ## Overview
 
@@ -46,6 +50,34 @@ Building footprints can be input as a vector or raster. If the building footprin
 - **Clipping Layer**
 
 The outputs can be clipped to match a polygon dataset, such as the outline of a state. All outputs will be clipped to the shape of the polygon clipping layer.
+
+### Sample Data
+
+For testing the toolbox, a set of sample data has been included in [sample-data](sample-data/). The following data has been included:
+
+- **ABoVE_2014_AK_Albers_FNSB.tif**
+
+A subset of the ABoVE Landcover data, clipped to the Fairbanks North Star Borough region
+
+- **ABoVE_remap_100m_Veg_Types.csv** and **ABoVE_remap_500m_Veg_Types.csv**
+
+Reclassification tables for ABoVE Landcover data, based on Beverly et al., 2021 and Schmidt et al., 2024. The format of these tables can be adapted for additional datasets with different hazard fuels classifications.
+
+- **Building_Outlines_FNSB.shp**
+
+FNSB building footprint GIS polygon data, accessed from https://services.arcgis.com/f4rR7WnIfGBdVYFd/arcgis/rest/services/Building_Outlines_2023_Pictometry/FeatureServer
+
+- **Building_Outlines_FNSB_500mBuffer_Raster.tif**
+
+FNSB building footprints, buffered to a 500 meter distance and converted to a GeoTIFF raster dataset.
+
+- **FNSB_Borough.shp**
+
+The boundary of the FNSB Borough as a polygon shapefile. This can be used as the 'Clipping Layer'.
+
+- **Vegetation_ABoVEOnly.lyrx**
+
+An ArcGIS Pro .lyrx file that contains symbology for the ABoVE Landcover.
 
 ## Methodology
 
