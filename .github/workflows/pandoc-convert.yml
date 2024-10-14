@@ -1,7 +1,11 @@
 name: Convert Markdown to PDF
 
 on:
-  workflow_dispatch:  # Manual trigger
+  push:
+    branches:
+      -main
+    paths:
+      - README.md
 
 jobs:
   build:
