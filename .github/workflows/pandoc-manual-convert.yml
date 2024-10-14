@@ -15,18 +15,26 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        
+        
+      - name: Create url-wrap.tex
+        run: |
+          echo '\usepackage{xurl}' > url-wrap.tex
+          echo '\usepackage{url}' > url-wrap.tex
+          echo '\usepackage{hyperref}' >> url-wrap.tex
+          echo '\hypersetup{breaklinks=true}' >> url-wrap.tex
+          echo '\def\UrlBreaks{\do\/\do-}' >> url-wrap.tex
+          echo '\sloppy' >> url-wrap.tex
 
       - name: Convert Markdown to PDF
         run: |
-
-          # Run pandoc to convert README.md to PDF
           docker run --rm -v ${{ github.workspace }}:/workspace -w /workspace pandoc/latex:latest \
             -V colorlinks=true \
             -V linkcolor=blue \
             -V urlcolor=blue \
             -V toccolor=gray \
             -V geometry:margin=1in \
-            -t html \
+            -H url-wrap.tex \
             README.md -o README.pdf
 
       - name: Configure git for commit
