@@ -52,7 +52,7 @@ The outputs can be clipped to match a polygon dataset, such as the outline of a 
 The following image illustrates the processing methods.
 
 
-![image](https://github.com/user-attachments/assets/35f87d21-13d2-40db-825f-fa5af7b4cf0c)
+![image](docs/flowdiag.png)
 Figure: Exposure assessment method process flowchart adapted from Beverly et al. (2010, 2021).
  
 
