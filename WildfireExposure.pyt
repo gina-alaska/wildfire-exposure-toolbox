@@ -303,7 +303,7 @@ class WildfireExposure(object):
                 parameters[11].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_100m.tif')
         if parameters[12].enabled and not parameters[12].altered:
             if parameters[2].value:
-                parameters[12].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_100m.tif')
+                parameters[12].value = os.path.join(home, os.path.basename(parameters[2].valueAsText)[:10] + '_Exposure_500m.tif')
             elif parameters[10].enabled and parameters[10].value:
                 parameters[12].value = os.path.join(home, os.path.basename(parameters[10].valueAsText)[:10] + '_Exposure_500m.tif')
         if parameters[18].enabled and not parameters[18].altered:
