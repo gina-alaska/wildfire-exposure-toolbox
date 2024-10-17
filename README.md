@@ -24,7 +24,7 @@ To use the toolbox, unzip the toolbox into a location on your ArcGIS Pro machine
 
 ## Changelog
 
-- 10/17/24 - Toolbox and Readme modifications for user clarity, fixed default naming bug
+- 10/17/24 - Toolbox and Readme modifications for user clarity, fixed default naming bug, added FNSB building shapefile to sample-data
 
 - 10/15/24 - Readme modifications
 
@@ -74,7 +74,7 @@ A subset of the ABoVE Landcover data, clipped to the Fairbanks North Star Boroug
 
 Reclassification tables for ABoVE Landcover data, based on Beverly et al., 2021 and Schmidt et al., 2024. The format of these tables can be adapted for additional datasets with different hazard fuels classifications.
 
-- **Building_Outlines_FNSB.shp**
+- **Building_Outlines_2023_Pictography_FNSB.shp**
 
 FNSB building footprint GIS polygon data, accessed from: https://fnsb.gov/1108/FNSB-GIS-Layer-REST-Services
 
@@ -85,6 +85,7 @@ FNSB building footprints, buffered to a 500 meter distance and converted to a Ge
 - **FNSB_Borough.shp**
 
 The boundary of the FNSB Borough as a polygon shapefile. This can be used as the 'Clipping Layer'.
+
 
 - **Vegetation_ABoVEOnly.lyrx**
 
