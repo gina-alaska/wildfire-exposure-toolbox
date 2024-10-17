@@ -4,6 +4,8 @@ This ArcGIS Python Toolbox, developed in collaboration with Dr. Jennifer Schmidt
 
 Schmidt, J.I., Ziel, R.H., Calef, M.P. et al. Spatial distribution of wildfire threat in the far north: exposure assessment in boreal communities. Nat Hazards 120, 4901–4924 (2024). https://doi.org/10.1007/s11069-023-06365-4
 
+Ziel R., Schmidt J.I., Calef M.P., and Varvek A. 2024. Mapping the Wildfire Threat for Boreal Communities. University of Alaska Anchorage and Fairbanks. https://www.frames.gov/sites/default/files/AFSC/presentations/WildfireExposureTechnicalReport.pdf 
+
 The toolbox was designed for replicating the described exposure assessment, and expanding to additional areas, in a user-friendly and repeatable way. Processing methods include the calculation of hazard fuels layers at 100 and 500 meter distances, exposure layers at 100 and 500 meter distances, and a combined exposure layer that assigns the values from the 100 meter exposure within a 500m buffer distance of a buildings layer, and the 500 meter exposure values outside those areas. Intermediate products are also created and saved, and the tool can use previously generated intermediate products as inputs to limit processing time.
 
 Toolbox development and publication by the Geographic Information Network of Alaska (GINA) at the University of Alaska Fairbanks.
@@ -22,8 +24,11 @@ To use the toolbox, unzip the toolbox into a location on your ArcGIS Pro machine
 
 ## Changelog
 
-10/15/24 - Readme modifications
-10/14/24 - v1.0.1 published
+- 10/17/24 - Toolbox and Readme modifications for user clarity, fixed default naming bug, added FNSB building shapefile to sample-data
+
+- 10/15/24 - Readme modifications
+
+- 10/14/24 - v1.0.1 published
 
 ## Known Issues
 
@@ -69,7 +74,7 @@ A subset of the ABoVE Landcover data, clipped to the Fairbanks North Star Boroug
 
 Reclassification tables for ABoVE Landcover data, based on Beverly et al., 2021 and Schmidt et al., 2024. The format of these tables can be adapted for additional datasets with different hazard fuels classifications.
 
-- **Building_Outlines_FNSB.shp**
+- **Building_Outlines_2023_Pictography_FNSB.shp**
 
 FNSB building footprint GIS polygon data, accessed from: https://fnsb.gov/1108/FNSB-GIS-Layer-REST-Services
 
@@ -80,6 +85,7 @@ FNSB building footprints, buffered to a 500 meter distance and converted to a Ge
 - **FNSB_Borough.shp**
 
 The boundary of the FNSB Borough as a polygon shapefile. This can be used as the 'Clipping Layer'.
+
 
 - **Vegetation_ABoVEOnly.lyrx**
 
