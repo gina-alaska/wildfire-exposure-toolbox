@@ -171,7 +171,7 @@ class WildfireExposure(object):
 
         bufferCheck = arcpy.Parameter(
             name="bufferCheck",
-            displayName="Building dataset needs buffer (vector only)",
+            displayName="Building dataset needs 500 meter buffer (vector only)",
             parameterType="Optional",
             direction="Input",
             datatype="GPBoolean")
@@ -282,6 +282,7 @@ class WildfireExposure(object):
             parameters[15].enabled = not parameters[7].value
             parameters[16].enabled = True
             parameters[17].enabled = True
+            parameters[17].value = True
             parameters[18].enabled = True
         else:
             parameters[14].enabled = False
@@ -313,6 +314,13 @@ class WildfireExposure(object):
                 parameters[18].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_Combined.tif')
             elif parameters[14].enabled and parameters[14].value:
                 parameters[18].value = os.path.join(home, os.path.basename(parameters[14].valueAsText)[:10] + '_Exposure_Combined.tif')
+        if parameters[16].value:
+            if parameters[16].value.isFeatureLayer and not parameters[17].altered:
+                parameters[17].value = True
+            elif parameters[16].value.isRasterLayer:
+                parameters[17].value = False
+                parameters[17].enabled = False
+
 
     def updateMessages(self, parameters):
         """Modify the messages created by internal validation for each tool
@@ -322,6 +330,7 @@ class WildfireExposure(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         # To allow overwriting outputs change overwriteOutput option to True.
+        arcpy.AddMessage(f'{parameters[17]}, {parameters[16].value}, {type(parameters[16].value)}, {parameters[16].value.isFeatureLayer}, {parameters[16].datatype}')
         arcpy.env.overwriteOutput = True
 
         # Check out any necessary licenses.
