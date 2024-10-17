@@ -44,7 +44,7 @@ class WildfireExposure(object):
         whichHaz.enabled = False
 
         input_raster = arcpy.Parameter(
-            displayName="Input raster",
+            displayName="Input Vegetation Raster",
             name="input_raster",
             datatype="GPRasterLayer",
             parameterType="Optional",
