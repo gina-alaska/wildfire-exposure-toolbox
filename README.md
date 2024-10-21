@@ -24,6 +24,8 @@ To use the toolbox, unzip the toolbox into a location on your ArcGIS Pro machine
 
 ## Changelog
 
+- 10/21/24 - v1.0.2 published, GitHub repository made public
+
 - 10/17/24 - Toolbox and Readme modifications for user clarity, fixed default naming bug, added FNSB building shapefile to sample-data
 
 - 10/15/24 - Readme modifications
