@@ -282,7 +282,7 @@ class WildfireExposure(object):
             parameters[15].enabled = not parameters[7].value
             parameters[16].enabled = True
             parameters[17].enabled = True
-            parameters[17].value = True
+            #parameters[17].value = True
             parameters[18].enabled = True
         else:
             parameters[14].enabled = False
