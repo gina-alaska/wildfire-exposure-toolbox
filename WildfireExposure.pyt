@@ -314,12 +314,12 @@ class WildfireExposure(object):
                 parameters[18].value = os.path.join(home, os.path.basename(parameters[9].valueAsText)[:10] + '_Exposure_Combined.tif')
             elif parameters[14].enabled and parameters[14].value:
                 parameters[18].value = os.path.join(home, os.path.basename(parameters[14].valueAsText)[:10] + '_Exposure_Combined.tif')
-        if parameters[16].value:
-            if parameters[16].value.isFeatureLayer and not parameters[17].altered:
-                parameters[17].value = True
-            elif parameters[16].value.isRasterLayer:
-                parameters[17].value = False
-                parameters[17].enabled = False
+        #if parameters[16].value:
+            #if parameters[16].value.isFeatureLayer and not parameters[17].altered:
+                #parameters[17].value = True
+            #elif parameters[16].value.isRasterLayer:
+                #parameters[17].value = False
+                #parameters[17].enabled = False
 
 
     def updateMessages(self, parameters):
