@@ -330,7 +330,7 @@ class WildfireExposure(object):
     def execute(self, parameters, messages):
         """The source code of the tool."""
         # To allow overwriting outputs change overwriteOutput option to True.
-        arcpy.AddMessage(f'{parameters[17]}, {parameters[16].value}, {type(parameters[16].value)}, {parameters[16].value.isFeatureLayer}, {parameters[16].datatype}')
+        #arcpy.AddMessage(f'{parameters[17]}, {parameters[16].value}, {type(parameters[16].value)}, {parameters[16].value.isFeatureLayer}, {parameters[16].datatype}')
         arcpy.env.overwriteOutput = True
 
         # Check out any necessary licenses.
